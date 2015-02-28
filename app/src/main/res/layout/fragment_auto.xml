@@ -1,0 +1,85 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/fragment_padding"
+    tools:context="org.farmingtonrobotics.scouting.matchscouting2015.AutoFrag"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Autonomous"
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_x="15dp"
+        android:layout_y="15dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moved to Auto zone"
+        android:id="@+id/autoZone"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView4"
+        android:checked="false"
+        android:layout_marginLeft="100dp"
+        android:layout_x="100dp"
+        android:layout_y="110dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moved Tote to Auto Zone"
+        android:id="@+id/autoToteSet"
+        android:layout_marginTop="25dp"
+        android:checked="false"
+        android:layout_below="@+id/autoZone"
+        android:layout_alignStart="@+id/autoZone"
+        android:layout_x="100dp"
+        android:layout_y="160dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Moved Container to Auto Zone"
+        android:id="@+id/autoContainerSet"
+        android:layout_marginTop="24dp"
+        android:checked="false"
+        android:layout_below="@+id/autoToteSet"
+        android:layout_alignStart="@+id/autoToteSet"
+        android:layout_x="100dp"
+        android:layout_y="210dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stacks totes for Tote Set"
+        android:id="@+id/autoToteStack"
+        android:layout_marginTop="25dp"
+        android:checked="false"
+        android:layout_below="@+id/autoContainerSet"
+        android:layout_alignStart="@+id/autoContainerSet"
+        android:layout_x="100dp"
+        android:layout_y="260dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is Disabled"
+        android:id="@+id/isDisabledAuto"
+        android:checked="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@android:color/holo_red_light"
+        android:layout_centerVertical="true"
+        android:layout_x="820dp"
+        android:layout_y="400dp" />
+
+</AbsoluteLayout>
