@@ -25,6 +25,7 @@ public class HomeActivity extends ActionBarActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
+
     SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
