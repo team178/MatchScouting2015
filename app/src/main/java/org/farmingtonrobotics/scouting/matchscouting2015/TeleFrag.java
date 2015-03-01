@@ -78,6 +78,7 @@ public class TeleFrag extends Fragment {
     }
 
     public static ArrayList<Container> getContainers() {
+        arrayContainers.clear();
         arrayContainers.add(new Container("Container 1"));
         arrayContainers.add(new Container("Container 2"));
         arrayContainers.add(new Container("Container 3"));

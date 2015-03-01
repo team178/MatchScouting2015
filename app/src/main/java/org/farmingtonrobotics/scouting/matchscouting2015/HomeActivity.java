@@ -1,7 +1,5 @@
 package org.farmingtonrobotics.scouting.matchscouting2015;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -36,7 +34,7 @@ public class HomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
+        getSupportActionBar().show();
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
