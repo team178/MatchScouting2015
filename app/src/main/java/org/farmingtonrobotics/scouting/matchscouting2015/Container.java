@@ -16,16 +16,17 @@ public class Container {
     public void setHeight(int height){
         this.height=height;
     }
-
     public boolean WasUsed() {
         return wasUsed;
     }
-
     public int getHeight() {
         return height;
     }
-
     public String getName() {
         return name;
+    }
+    @Override
+    public String toString(){
+        return getName()+","+getHeight()+","+WasUsed();
     }
 }

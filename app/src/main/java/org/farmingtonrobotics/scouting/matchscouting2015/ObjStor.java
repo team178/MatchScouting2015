@@ -5,6 +5,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nandan on 2/13/2015.
  */
@@ -24,10 +26,22 @@ public class ObjStor {
     public static NumberPicker teleNumStacks,teleNumTotes,teleNumContainers,teleMaxStackHeight;
     public static CheckBox teleisDisabled, autoisDisabled,autoZone,autoToteSet,autoToteStack,autoContainerSet;
     public static EditText teamNumber,matchNumber;
+    static ArrayList<Container> arrayContainers= new ArrayList<Container>(7);
 
     public static String getCSV(){
-        return (readEditText(teamNumber)+","+readEditText(matchNumber)+","+readCheckBox(autoisDisabled)+","+readCheckBox(autoZone)+","+readCheckBox(autoToteSet)+","+readCheckBox(autoToteStack)+","+readCheckBox(autoContainerSet)+","+readCheckBox(teleisDisabled)+","+readNumPick(teleNumStacks)+","+readNumPick(teleNumTotes)+","+readNumPick(teleNumContainers)+","+readNumPick(teleMaxStackHeight)+"\n");
+        return (readEditText(teamNumber)+","+readEditText(matchNumber)+","+readCheckBox(autoisDisabled)+","+readCheckBox(autoZone)+","+readCheckBox(autoToteSet)+","+readCheckBox(autoToteStack)+","+
+                readCheckBox(autoContainerSet)+","+readCheckBox(teleisDisabled)+","+readNumPick(teleNumStacks)+","+readNumPick(teleNumTotes)+
+                getContainerData()+"\n");
     }
+
+    private static String getContainerData() {
+        String data=null;
+        for(Container c:arrayContainers){
+            data.concat(","+c.toString());
+        }
+        return data;
+    }
+
     private static int readNumPick(NumberPicker numberPicker){
         return numberPicker.getValue();
     }

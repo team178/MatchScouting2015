@@ -24,8 +24,8 @@ import java.util.ArrayList;
 public class TeleFrag extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    //This var has ALL of the Container Data
 
-    static ArrayList<Container> arrayContainers= new ArrayList<Container>(7);
 
     public static TeleFrag newInstance() {
         TeleFrag fragment = new TeleFrag();
@@ -78,15 +78,15 @@ public class TeleFrag extends Fragment {
     }
 
     public static ArrayList<Container> getContainers() {
-        arrayContainers.clear();
-        arrayContainers.add(new Container("Container 1"));
-        arrayContainers.add(new Container("Container 2"));
-        arrayContainers.add(new Container("Container 3"));
-        arrayContainers.add(new Container("Container 4"));
-        arrayContainers.add(new Container("Container 5"));
-        arrayContainers.add(new Container("Container 6"));
-        arrayContainers.add(new Container("Container 7"));
-        return arrayContainers;
+        ObjStor.arrayContainers.clear();
+        ObjStor.arrayContainers.add(new Container("Container 1"));
+        ObjStor.arrayContainers.add(new Container("Container 2"));
+        ObjStor.arrayContainers.add(new Container("Container 3"));
+        ObjStor.arrayContainers.add(new Container("Container 4"));
+        ObjStor.arrayContainers.add(new Container("Container 5"));
+        ObjStor.arrayContainers.add(new Container("Container 6"));
+        ObjStor.arrayContainers.add(new Container("Container 7"));
+        return ObjStor.arrayContainers;
     }
 
     /**

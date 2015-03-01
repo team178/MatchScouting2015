@@ -17,7 +17,8 @@ import java.util.ArrayList;
 /**
  * Created by Nandan on 2/28/2015.
  */
-public class ContainerAdapter extends ArrayAdapter<Container> {
+
+    public class ContainerAdapter extends ArrayAdapter<Container> {
 
     public ArrayList<Container> containers = new ArrayList<Container>();
     private Activity context;
