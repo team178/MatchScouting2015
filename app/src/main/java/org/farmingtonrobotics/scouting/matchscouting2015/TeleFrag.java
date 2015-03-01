@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.NumberPicker;
+
+import java.util.ArrayList;
 
 
 /**
@@ -21,6 +24,9 @@ import android.widget.NumberPicker;
 public class TeleFrag extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+
+    static ArrayList<Container> arrayContainers= new ArrayList<Container>(7);
+
     public static TeleFrag newInstance() {
         TeleFrag fragment = new TeleFrag();
         return fragment;
@@ -52,15 +58,8 @@ public class TeleFrag extends Fragment {
         teleNumTotes.setMinValue(0);
         teleNumTotes.setMaxValue(150);
         ObjStor.getInstance().teleNumTotes = teleNumTotes;
-        NumberPicker teleNumContainers = (NumberPicker) rootView.findViewById(R.id.teleNumContainers);
-        teleNumContainers.setMinValue(0);
-        teleNumContainers.setMaxValue(7);
-        ObjStor.getInstance().teleNumContainers = teleNumContainers;
-        NumberPicker teleContainerMax = (NumberPicker) rootView.findViewById(R.id.teleContainerMax);
-        teleContainerMax.setMaxValue(7);
-        teleContainerMax.setMinValue(0);
-        ObjStor.getInstance().teleMaxStackHeight = teleContainerMax;
-
+        ListView containerEditor = (ListView) rootView.findViewById(R.id.listView);
+        containerEditor.setAdapter(new ContainerAdapter(getActivity(),getContainers()));
         return rootView;
     }
 
@@ -76,6 +75,17 @@ public class TeleFrag extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public static ArrayList<Container> getContainers() {
+        arrayContainers.add(new Container("Container 1"));
+        arrayContainers.add(new Container("Container 2"));
+        arrayContainers.add(new Container("Container 3"));
+        arrayContainers.add(new Container("Container 4"));
+        arrayContainers.add(new Container("Container 5"));
+        arrayContainers.add(new Container("Container 6"));
+        arrayContainers.add(new Container("Container 7"));
+        return arrayContainers;
     }
 
     /**

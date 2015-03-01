@@ -77,24 +77,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Number of Containers"
-        android:id="@+id/textView12"
-        android:layout_x="550dp"
-        android:layout_y="130dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Maximum Height"
-        android:id="@+id/textView11"
-        android:layout_x="420dp"
-        android:layout_y="130dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Number of Containers"
         android:id="@+id/textView10"
         android:layout_x="400dp"
@@ -102,20 +84,11 @@
         android:textColor="@android:color/black"
         android:textSize="20dp" />
 
-    <NumberPicker
+    <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/teleContainerMax"
-        android:layout_x="440dp"
-        android:layout_y="150dp"
-        android:orientation="vertical" />
-
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/teleNumContainers"
-        android:layout_x="570dp"
-        android:layout_y="150dp"
-        android:orientation="vertical" />
+        android:layout_height="300dp"
+        android:id="@+id/listView"
+        android:layout_x="420dp"
+        android:layout_y="130dp" />
 
 </AbsoluteLayout>
