@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -108,6 +109,18 @@ public class HomeActivity extends ActionBarActivity {
         }
 
         @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            if(ObjStor.getInstance().murder) {
+                for(int i = 0; i<getCount();i++) {
+                    super.destroyItem(container, i, getItem(i));
+                }
+            }
+            else{
+                //Killing is bad. Unless justified as above.
+            }
+        }
+
+        @Override
         public int getCount() {
             // Show 3 total pages.
             return 4;
@@ -126,6 +139,7 @@ public class HomeActivity extends ActionBarActivity {
             }
             return null;
         }
+
     }
 
 }

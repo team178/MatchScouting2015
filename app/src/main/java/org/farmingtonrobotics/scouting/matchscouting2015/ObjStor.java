@@ -23,6 +23,7 @@ public class ObjStor {
         return getInstance();
     }
 
+    public static Boolean murder = false;
     public static NumberPicker teleNumStacks,teleNumTotes,teleNumContainers,teleMaxStackHeight;
     public static CheckBox teleisDisabled, autoisDisabled,autoZone,autoToteSet,autoToteStack,autoContainerSet;
     public static EditText teamNumber,matchNumber,notes;
@@ -37,7 +38,7 @@ public class ObjStor {
     private static String getContainerData() {
         String data="";
         for(Container c:arrayContainers){
-            data.concat(","+c.toString());
+            data = data.concat(c.toString());
         }
         return data;
     }

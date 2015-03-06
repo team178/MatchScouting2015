@@ -1,7 +1,6 @@
 package org.farmingtonrobotics.scouting.matchscouting2015;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.app.AlertDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,10 +30,11 @@ import java.io.OutputStreamWriter;
 public class SaveFrag extends Fragment {
 
 
-    int clicks = 0;
+    int Saveclicks = 0;
+    int Resetclicks = 0;
     private OnFragmentInteractionListener mListener;
 
-        public static SaveFrag newInstance() {
+    public static SaveFrag newInstance() {
         SaveFrag fragment = new SaveFrag();
         return fragment;
     }
@@ -59,57 +59,74 @@ public class SaveFrag extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(rootView.getContext(), "Data Saving." + ObjStor.getCSV(), Toast.LENGTH_SHORT).show();
-                FileOutputStream outputStream;
-                OutputStreamWriter outputStreamWriter;
-                try {
-                    String externaldirectorypath = Environment.getExternalStorageDirectory().toString() + "/EnforcersScouting";
-                    String internaldirectorypath = Environment.getExternalStorageDirectory().toString() + "/EnforcersScouting/MatchData";
-                    File internaldirectoryfile = new File(externaldirectorypath, "MatchData");
-                    if (!internaldirectoryfile.exists()) {
-                        internaldirectoryfile.mkdirs();
-                    }
-                    File realfilepass = new File(internaldirectorypath, "frc_score_2015_"+ Settings.Secure.getString(rootView.getContext().getContentResolver(), Settings.Secure.ANDROID_ID)+".csv");
-                    if (!realfilepass.exists()) {
-                        outputStream = new FileOutputStream(realfilepass, false);
-                        outputStreamWriter = new OutputStreamWriter(outputStream);
-                    } else {
-                        outputStream = new FileOutputStream(realfilepass, true);
-                        outputStreamWriter = new OutputStreamWriter(outputStream);
-                    }
-                    outputStreamWriter.write(ObjStor.getCSV());
-                    outputStream.write(String.valueOf(ObjStor.getCSV()).getBytes());
+                if(Saveclicks==0){
+                    AlertDialog.Builder saveAlert = new AlertDialog.Builder(getActivity());
+                    saveAlert.setTitle("Saving");
+                    saveAlert.setMessage("You may save once only. Ensure that this data is correct.\n If it is, PRESS THIS BUTTON AGAIN");
+                    saveAlert.setPositiveButton("Got It!", null);
+                    saveAlert.show();
+                    Saveclicks++;
                 }
-                catch(Exception e){
-                    //I should record the exception, but I won't
+                else {
+                    Toast.makeText(rootView.getContext(), "Data Saving." + ObjStor.getCSV() + "\n Kill ", Toast.LENGTH_SHORT).show();
+                    FileOutputStream outputStream;
+                    OutputStreamWriter outputStreamWriter;
+                    try {
+                        String externaldirectorypath = Environment.getExternalStorageDirectory().toString() + "/EnforcersScouting";
+                        String internaldirectorypath = Environment.getExternalStorageDirectory().toString() + "/EnforcersScouting/MatchData";
+                        File internaldirectoryfile = new File(externaldirectorypath, "MatchData");
+                        if (!internaldirectoryfile.exists()) {
+                            internaldirectoryfile.mkdirs();
+                        }
+                        File realfilepass = new File(internaldirectorypath, "frc_score_2015_" + Settings.Secure.getString(rootView.getContext().getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+                        if (!realfilepass.exists()) {
+                            outputStream = new FileOutputStream(realfilepass, false);
+                            outputStreamWriter = new OutputStreamWriter(outputStream);
+                        } else {
+                            outputStream = new FileOutputStream(realfilepass, true);
+                            outputStreamWriter = new OutputStreamWriter(outputStream);
+                        }
+                        outputStreamWriter.write(ObjStor.getCSV());
+                        outputStream.write(String.valueOf(ObjStor.getCSV()).getBytes());
+                    } catch (Exception e) {
+                        //I should record the exception, but I won't
+                    }
+                    reset.setEnabled(true);
+                    save.setEnabled(false);
                 }
-                reset.setEnabled(true);
-                save.setEnabled(false);
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(clicks == 0){
-                    Toast.makeText(getActivity(),"THIS CANNOT BE UNDONE. SAVE ONCE ONLY TAP AGAIN TO CONFIRM",Toast.LENGTH_SHORT).show();
-                    clicks++;
+                if(Resetclicks == 0){
+                    Toast.makeText(getActivity(),"Double click. I dare you.",Toast.LENGTH_SHORT).show();
+                    Resetclicks++;
                 }
                 else{
                     Toast.makeText(getActivity(),"Oh, ok. I see how it is. -NT",Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            AlertDialog.Builder resetDiag = new AlertDialog.Builder(getActivity());
+                            resetDiag .setTitle("Instructions")
+                                    .setMessage("You must restart the app to scout another match")
+                                    .setPositiveButton("Understood.",null);
+                            resetDiag.show();
                             System.gc();
                         }
-                    },100);
+                    },50);
+                    /* Doesn't really work
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             PackageManager pm = getActivity().getPackageManager();
-                            Intent intent = pm.getLaunchIntentForPackage("org.farmingtonrobotics.scouting.matchscouting2015");
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.setComponent(new ComponentName("org.farmingtonrobotics.scouting.matchscouting2015","org.farmingtonrobotics.scouting.matchscouting2015.HomeActivity"));
                             startActivity(intent);
                         }
                     },1500);
+                    */
                     getActivity().finish();
                 }
             }
