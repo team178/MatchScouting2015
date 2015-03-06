@@ -35,7 +35,7 @@ public class ObjStor {
     }
 
     private static String getContainerData() {
-        String data=null;
+        String data="";
         for(Container c:arrayContainers){
             data.concat(","+c.toString());
         }
