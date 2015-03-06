@@ -27,6 +27,6 @@ public class Container {
     }
     @Override
     public String toString(){
-        return getName()+","+getHeight()+","+WasUsed();
+        return getHeight()+","+WasUsed();
     }
 }

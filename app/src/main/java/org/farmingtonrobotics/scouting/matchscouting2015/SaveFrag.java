@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
@@ -100,7 +101,7 @@ public class SaveFrag extends Fragment {
                         public void run() {
                             System.gc();
                         }
-                    },50);
+                    },100);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -108,12 +109,13 @@ public class SaveFrag extends Fragment {
                             Intent intent = pm.getLaunchIntentForPackage("org.farmingtonrobotics.scouting.matchscouting2015");
                             startActivity(intent);
                         }
-                    },1000);
+                    },1500);
                     getActivity().finish();
                 }
             }
         });
-
+        final EditText endMatchNotes = (EditText) rootView.findViewById(R.id.endMatchNotes);
+        ObjStor.getInstance().notes = endMatchNotes;
 
         return rootView;
     }

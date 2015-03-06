@@ -25,13 +25,13 @@ public class ObjStor {
 
     public static NumberPicker teleNumStacks,teleNumTotes,teleNumContainers,teleMaxStackHeight;
     public static CheckBox teleisDisabled, autoisDisabled,autoZone,autoToteSet,autoToteStack,autoContainerSet;
-    public static EditText teamNumber,matchNumber;
+    public static EditText teamNumber,matchNumber,notes;
     static ArrayList<Container> arrayContainers= new ArrayList<Container>(7);
 
     public static String getCSV(){
         return (readEditText(teamNumber)+","+readEditText(matchNumber)+","+readCheckBox(autoisDisabled)+","+readCheckBox(autoZone)+","+readCheckBox(autoToteSet)+","+readCheckBox(autoToteStack)+","+
                 readCheckBox(autoContainerSet)+","+readCheckBox(teleisDisabled)+","+readNumPick(teleNumStacks)+","+readNumPick(teleNumTotes)+
-                getContainerData()+"\n");
+                getContainerData()+","+readEditText(notes)+"\n");
     }
 
     private static String getContainerData() {
