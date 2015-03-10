@@ -31,8 +31,8 @@ public class ObjStor {
 
     public static String getCSV(){
         return (readEditText(teamNumber)+","+readEditText(matchNumber)+","+readCheckBox(autoisDisabled)+","+readCheckBox(autoZone)+","+readCheckBox(autoToteSet)+","+readCheckBox(autoToteStack)+","+
-                readCheckBox(autoContainerSet)+","+readCheckBox(teleisDisabled)+","+readNumPick(teleNumStacks)+","+readNumPick(teleNumTotes)+
-                getContainerData()+","+readEditText(notes)+"\n");
+                readCheckBox(autoContainerSet)+","+readCheckBox(teleisDisabled)+","+readNumPick(teleNumStacks)+","+readNumPick(teleNumTotes)+","+
+                getContainerData()+readEditText(notes)+"\n");
     }
 
     private static String getContainerData() {
